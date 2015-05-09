@@ -121,5 +121,5 @@ BUNDLE_DISABLE_SHARED_GEMS: '1'
 set-default-env LIBRARY_PATH "$APP_VENDOR/lib"
 set-default-env LD_LIBRARY_PATH "$APP_VENDOR/lib"
 set-default-env CPATH "$APP_VENDOR/include"
-
+ls /app/.heroku/vendor/lib
 echo "-----> Vendoring geo libraries done"
