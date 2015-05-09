@@ -89,12 +89,13 @@ if [ ! -d $CACHE_DIR/$VENDORED_PROJ ]; then
 fi
 
 # App directories
+TARGET_VENDOR_DIR=".heroku/vendor"
+
 APP_VENDOR="/app/$TARGET_VENDOR_DIR"
 
-TARGET_VENDOR_DIR=".heroku/vendor"
 # Copy artifacts out of cache if exists.
 for dir in $VENDORED_GEOS $VENDORED_GDAL $VENDORED_PROJ; do
-  mkdir -p $BUILD_DIR/$TARGET_VENDOR_DIR
+  mkdir -p $APP_VENDOR
   cp -r $CACHE_DIR/$dir/* $APP_VENDOR &> /dev/null || true
 done
 
