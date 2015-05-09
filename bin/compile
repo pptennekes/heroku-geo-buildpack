@@ -88,15 +88,17 @@ if [ ! -d $CACHE_DIR/$VENDORED_PROJ ]; then
   download_package "proj" "${PROJ_VERSION}" "${CACHE_DIR}/${VENDORED_PROJ}"
 fi
 
+# App directories
+APP_VENDOR="/app/$TARGET_VENDOR_DIR"
+
 TARGET_VENDOR_DIR=".heroku/vendor"
 # Copy artifacts out of cache if exists.
 for dir in $VENDORED_GEOS $VENDORED_GDAL $VENDORED_PROJ; do
   mkdir -p $BUILD_DIR/$TARGET_VENDOR_DIR
-  cp -r $CACHE_DIR/$dir/* $BUILD_DIR/$TARGET_VENDOR_DIR &> /dev/null || true
+  cp -r $CACHE_DIR/$dir/* $APP_VENDOR &> /dev/null || true
 done
 
-# App directories
-APP_VENDOR="/app/$TARGET_VENDOR_DIR"
+
 
 # Setup environment variables
 set-env GEOS_LIBRARY_PATH "$APP_VENDOR/lib"
